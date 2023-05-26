@@ -3,7 +3,7 @@
 
 ## Intro
 
-[Gitflow]( [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/)) é uma estratpegia de branching muito conhecida e largamente adotada pelo mercado. 
+[Gitflow](https://nvie.com/posts/a-successful-git-branching-model/) é uma estratpegia de branching muito conhecida e largamente adotada pelo mercado. 
 
 Existem, porém, alguns problemas:
 
