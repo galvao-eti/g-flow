@@ -8,7 +8,7 @@
 Existem, porém, alguns problemas:
 
 1. As ferramentas desenvolvidas pelo próprio criador, não apenas parecem abandonadas, mas não levam em consideração um hub (Github, Gitlab, Bitbucket, etc...) o que gerou uma miríade de forks, que por sua vez têm os seus problemas;
-1. A estratégia em si e por consequência as ferramentas consideram apenas uma branch permanente, o que não apenas não condiz com a realidade de muitos repositórios, mas pode melhorar (mais sobre isso abaixo).
+1. A estratégia em si e por consequência as ferramentas consideram apenas duas branches permanentes, o que não apenas não condiz com a realidade de muitos repositórios, mas pode melhorar (mais sobre isso abaixo).
 
 ### Estratégia de Branching
 Conforme já mencionado a g-flow é uma estratégia baseada na [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/), demonstrada nos conceitos e diagramas abaixo.
