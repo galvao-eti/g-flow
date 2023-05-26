@@ -23,7 +23,7 @@ Questões importantes a serem consideradas:
 
 ### Conceitos
 
-1. Desnevolvimento é a branch Bleeding Edge, onde todas as issues são mergeadas quando aprovadas.
+1. Desenvolvimento é a branch Bleeding Edge, onde todas as issues são mergeadas quando aprovadas.
 1. Homologação é a branch de Pré-Release e pode temporariamente sair de sincronia com as demais dependendo do processo de Homologação.
 1. Branches de Release são propositalmente permanentes para que seja possível a rápida troca de versões para inspeção, comparações, etc...
 1. Na concepção do projeto (tempo === 0), as branches iniciais (Desenvolvimento, Homologação e Produção) são exatamente iguais e, em caso de um sistema existente, um espelho da branch de Produção do Cliente;
