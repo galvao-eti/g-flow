@@ -2,6 +2,7 @@
 ![Logo](media/logo.png)
 
 ## Intro
+g-flow é uma implementação Gitflow completa e prática.
 
 [Gitflow](https://nvie.com/posts/a-successful-git-branching-model/) é uma estratégia de branching muito conhecida e largamente adotada pelo mercado. 
 
@@ -25,11 +26,14 @@ Questões importantes a serem consideradas:
 
 1. Desenvolvimento é a branch Bleeding Edge, onde todas as issues são mergeadas quando aprovadas.
 1. Homologação é a branch de Pré-Release e pode temporariamente sair de sincronia com as demais dependendo do processo de Homologação.
-1. Branches de Release são propositalmente permanentes para que seja possível a rápida troca de versões para inspeção, comparações, etc...
+1. Branches de Release são propositalmente permanentes para que seja possível a rápida troca de versões para regressão, inspeção, comparações, etc...
 1. Na concepção do projeto (tempo === 0), as branches iniciais (Desenvolvimento, Homologação e Produção) são exatamente iguais e, em caso de um sistema existente, um espelho da branch de Produção do Cliente;
 1. Code Freeze é o período de tempo onde é absolutamente proibido realizar merges em qualquer branch.
 
 ### Fluxos de Exemplo:
+
+O diagrama estático pode ser confuso dependendo do seu nível de familiaridade com git, branches, etc... Para um acompanhamento passo-a-passo, consulte [os alides](media/presentation/g-flow.pdf).
+
 #### Fluxo 0: Hotfix
 ![Fluxo 0](media/diagram/Case0-Hotfix.png)
 1. Após a identificação do bug o(a) Release Manager (RM) declara o início do Code Freeze.
@@ -73,11 +77,11 @@ Questões importantes a serem consideradas:
 3. O período de Code Freeze é encerrado.
 #### Fluxo 2: Epic Feature
 ![Fluxo 2](media/diagram/Case2-Epic.png)
-1. É criada uma branch com o nome no formato feature/nome_da_epic a partir de Produção.
-1. Devs criam branches de features com o nome no formato feature/issue a partir de feature/nome_da_epic e imediatamente a criam remotamente, p.ex.:  
+1. É criada uma branch com o nome no formato epic/nome_epic a partir de Produção.
+1. Devs criam branches de features com o nome no formato feature/issue a partir de epic/nome_epic e imediatamente a criam remotamente, p.ex.:  
   
  ```bash
- git checkout -b feature/1902 feature/epic
+ git checkout -b feature/1902 epic/nome_epic
  git push -u origin feature/1902
  ```
   3. Devs trabalham nas suas branches, testam a feature localmente e fazem pushes para a sua branch remota.
@@ -86,8 +90,10 @@ Questões importantes a serem consideradas:
  git commit -m "Mensagem de Commit"
  git push
  ```
-4. Ao concluir o trabalho, Dev abre uma PR para Desenvolvimento.
+4. Ao concluir o trabalho, Dev abre uma PR para a branch da epic.
 4. É realizado o Code Review.
+4. Se a PR for aprovada, o(a) RM faz o merge para a branch da epic.
+4. Quando a epic estiver concluída e testada, Dev abre uma PR para Desenvolvimento.
 4. Se a PR for aprovada, o(a) RM faz o merge para Desenvolvimento e Homologação e declara o início do Code Freeze.
 4. Em Homologação são realizados os testes de Regra de Negócio. Caso o trabalho seja homologado, ele é mergeado no ambiente de Homologação do Cliente.
 4. O Cliente então faz os seus testes para que a alteração seja homologada.
@@ -114,3 +120,16 @@ Questões importantes a serem consideradas:
 7. O Cliente então faz os seus testes para que a alteração seja homologada.
 8. Se o cliente homologar, o(a) RM lança a release a partir de Homologação e faz o merge para todas as branches de Homologação e Produção.
 9. O período de Code Freeze é encerrado.
+
+## FAQ
+
+1. Por que existem tantos tipos diferentes de branches?
+Para possibilitar métricas (quantidade de fixes, features, etc... por release).
+1. Qual a diferença entre Hotfix e Fix?
+A diferença é procedural. O Hotfix é um bug crítico que se encontra em produção e portanto deve ser corrigido rapidamente, ignorando passos de um Fix "normal" (Code Review, Origem de Release, etc...).
+1. Porque a branch de Homologação recebe release se a release normalmente parte dela (mesmo caso com hotfixes e a branch de Produção)?
+Para manter as branches de Homologação e Produção absolutamente sincronizadas, incluindo releases e versionamento.
+1. Versionamento?
+Sim. g-flow é alinhado com a prática de [Versionamento Semântico](https://semver.org/). A ferramenta incluirá um script de "bump" de versão.
+1. Quando a ferramenta ficará pronta?
+A ferramenta, escrita em bash, está quase pronta. Fique de olho ("watch") no repositório para ser avisado assim que ela for lançada.
