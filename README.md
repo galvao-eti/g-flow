@@ -32,7 +32,7 @@ Questões importantes a serem consideradas:
 
 ### Fluxos de Exemplo:
 
-O diagrama estático pode ser confuso dependendo do seu nível de familiaridade com git, branches, etc... Para um acompanhamento passo-a-passo, consulte [os alides](media/presentation/g-flow.pdf).
+O diagrama estático pode ser confuso dependendo do seu nível de familiaridade com git, branches, etc... Para um acompanhamento passo-a-passo, consulte [os slides](media/presentation/g-flow.pdf).
 
 #### Fluxo 0: Hotfix
 ![Fluxo 0](media/diagram/Case0-Hotfix.png)
