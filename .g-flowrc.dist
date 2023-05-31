@@ -1,0 +1,31 @@
+#############################################################
+#                                                           #
+# g-flow - A commplete and practical Gitflow implementation #
+# https://github.com/galvao-eti/g-flow                      #
+#                                                           #
+#############################################################
+
+# To use this file as the configuration for g-flow
+# Save this file as .g-flowrc
+# Otherwise it will run based on the values below
+
+# Initial Version, in case the VERSION file doesn't exist
+
+INIT_VERSION=0.1.0
+
+# Branch types. If you wish to "disable" a branch type: set it to ""
+
+EPIC=epic
+FEATURE=feat
+FIX=fix
+HOTFIX=hfix
+
+# Initial branches' names
+
+PROD_BRANCH=main
+HMG_BRANCH=homolog
+DEV_BRANCH=dev
+
+# Remote name
+
+REMOTE=origin

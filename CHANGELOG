@@ -1,0 +1,39 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.0] - 2023-05-31
+
+## Added
+
+- This CHANGELOG
+- Tool with the necessary functionalities for developers to implement the g-flow strategy
+- A file to configure the tool (.g-flowrc[.dist])
+
+## Fixed
+
+- Typo on the README's text
+
+## [0.1.0] - 2023-05-28
+
+### Added
+
+- Added .backup files to .gitignore
+- Added the project's Logo
+- Added the diagrams
+- Added the presentation (PDF)
+
+## Changed
+
+- Changed the project's license to MIT
+- Changed the README file to reflect the diagrams and concepts of the project
+
+## Fixed
+
+- Fixes and standardization to the diagrams
+- Initial link to Gtiflow corrected
+- Fixed the Gitflow definition
+- Fixed the Epic's story
+- Typos on the README's text
