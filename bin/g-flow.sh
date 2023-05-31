@@ -51,6 +51,13 @@ COMMANDS (unless otherwise overriden by a .g-flowrc file)
         Creates a hotfix branch
 '
 
+# If no arguments were passed, shows the USAGE and exits
+
+if [ "$#" -eq 0 ]; then
+    echo "$USAGE"
+    exit 0
+fi
+
 # If there's a .g-flowrc file present, override the configuration keys present in this file
 
 if [ -e ".g-flowrc" ]; then
@@ -92,16 +99,16 @@ fi
 # Tests if the branch type is valid
 
 if  ! echo ${VALID_TYPES[@]} | grep -q -w "$TYPE"; then
-     echo "$USAGE"
      echo "Error: Invalid branch_type ($TYPE). Accepted types:" ${VALID_TYPES[*]}
+     echo "$USAGE"
      exit 1
 fi
 
 # Tests if the branch name was supplied
 
 if [ "$NAME" = "" ]; then
-    echo "$USAGE"
     echo "Error: branch_name is required"
+    echo "$USAGE"
     exit 1
 fi
 
