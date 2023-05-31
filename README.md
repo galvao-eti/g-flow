@@ -1,6 +1,8 @@
 # g-flow
 ![Logo](media/logo.png)
 
+[ [Intro](#intro) ] [ [Ferramenta](#ferramenta) ] [ [Estratégia de Branching](#estratégia-de-branching) ] [ [Fluxos de Exemplo](#fluxos-de-exemplo) ] [ [FAQ](#faq) ]
+
 ## Intro
 g-flow é uma implementação Gitflow completa e prática.
 
@@ -30,6 +32,43 @@ Questões importantes a serem consideradas:
 1. Na concepção do projeto (tempo === 0), as branches iniciais (Desenvolvimento, Homologação e Produção) são exatamente iguais e, em caso de um sistema existente, um espelho da branch de Produção do Cliente;
 1. Code Freeze é o período de tempo onde é absolutamente proibido realizar merges em qualquer branch.
 
+### Ferramenta
+
+#### Importante
+
+1. Como qualquer software livre, a ferramenta `g-flow.sh` é fornecida sem garantias (veja o arquivo da [Licença](/LICENSE));
+1. Por favor observe que a ferramenta **sempre** fará:
+* Um checkout de produção e um pull para garantir que sua cópia de produção esteja sincroizada;
+* Sincronização da branch criada com o remote.
+3. Embora eu não seja um ignorante no assunto eu não sou, por nenhum esforço de imaginação, um programador bash, portanto muitas coisas na ferramenta provavelmente podem ser melhoradas. Em breve vou publicar as guidelines para contribuir com o projeto.
+1. No momento a ferramenta foi testada apenas com Linux (Fedora, mas deve funcionar em qualquer distribuição que possua uma versão mdoerna de bash rodando). Testes em outras distribuições Linux e outros Sistemas Operacionais são **muito bem-vindas**, mas não posso garantir implementações para outros SOs.
+
+#### Instalação
+
+Apenas clone esse repositório ou faça o download da [release mais recente](https://github.com/galvao-eti/g-flow/releases).
+
+Alternativamente (recomendado) crie um link simbólico para a ferramenta:
+
+```bash
+sudo ln -s caminho_para_o_clone/bin/g-flow.sh /usr/local/bin/g-flow
+```
+
+#### Uso
+
+Simplesmente rode a ferramenta sem nenhum argumento para exibir a ajuda:
+
+```bash
+g-flow
+```
+
+#### Configuração
+
+A ferramenta roda com uma configuração default, presente no arquivo [.g-flowrc.dist](/.g-flowrc.dist).
+
+Para alterar qualquer configuração copie esse arquivo como `.g-flowrc` na raiz do seu projeto. O arquivo é sempre válido apenas para o projeto em si.
+
+Não use aspas em nenum dos valores de configuração e não use caracteres que não sejam letras, números, hífen ( - ) e sublinhado ( _ ).
+
 ### Fluxos de Exemplo:
 
 O diagrama estático pode ser confuso dependendo do seu nível de familiaridade com git, branches, etc... Para um acompanhamento passo-a-passo, consulte [os slides](media/presentation/g-flow.pdf).
@@ -38,7 +77,15 @@ O diagrama estático pode ser confuso dependendo do seu nível de familiaridade 
 ![Fluxo 0](media/diagram/Case0-Hotfix.png)
 1. Após a identificação do bug o(a) Release Manager (RM) declara o início do Code Freeze.
 1. Dev cria a branch com o nome no formato hotfix/issue a partir de Produção e imediatamente a cria remotamente, p.ex.:  
+
+Com a ferramenta `g-flow.sh`:
+
+ ```bash
+ g-flow hfix 1903
+ ```
   
+Sem a ferramenta `g-flow.sh`:
+
  ```bash
  git checkout -b hotfix/1903 main
  git push -u origin hotfix/1903
@@ -57,7 +104,15 @@ O diagrama estático pode ser confuso dependendo do seu nível de familiaridade 
 #### Fluxo 1: Feature
 ![Fluxo 1](media/diagram/Case1-Feature.png)
 1. Dev cria a branch com o nome no formato feature/issue a partir de Produção e imediatamente a cria remotamente, p.ex.:    
+ 
+Com a ferramenta `g-flow.sh`:
+
+ ```bash
+ g-flow feat 1901
+ ```
   
+Sem a ferramenta `g-flow.sh`:
+
  ```bash
  git checkout -b feature/1901 main
  git push -u origin feature/1901
@@ -79,7 +134,14 @@ O diagrama estático pode ser confuso dependendo do seu nível de familiaridade 
 ![Fluxo 2](media/diagram/Case2-Epic.png)
 1. É criada uma branch com o nome no formato epic/nome_epic a partir de Produção.
 1. Devs criam branches de features com o nome no formato feature/issue a partir de epic/nome_epic e imediatamente a criam remotamente, p.ex.:  
-  
+
+Com a ferramenta `g-flow.sh`:
+
+ ```bash
+ g-flow feat 1902 epic/nome_epic
+ ```
+Sem a ferramenta `g-flow.sh`:
+ 
  ```bash
  git checkout -b feature/1902 epic/nome_epic
  git push -u origin feature/1902
@@ -103,6 +165,13 @@ O diagrama estático pode ser confuso dependendo do seu nível de familiaridade 
 ![Fluxo 3](media/diagram/Case3-Fix.png)
 1. Dev cria a branch com o nome no formato fix/issue a partir de Produção e imediatamente a cria remotamente, p.ex.:  
 
+Com a ferramenta `g-flow.sh`:
+
+ ```bash
+ g-flow fix 1904
+ ```
+Sem a ferramenta `g-flow.sh`:
+ 
  ```bash
  git checkout -b fix/1904 main
  git push -u origin fix/1904
@@ -123,13 +192,20 @@ O diagrama estático pode ser confuso dependendo do seu nível de familiaridade 
 
 ## FAQ
 
-1. Por que existem tantos tipos diferentes de branches?
+<details>
+<summary>1. Por que existem tantos tipos diferentes de branches?</summary>
 Para possibilitar métricas (quantidade de fixes, features, etc... por release).
-1. Qual a diferença entre Hotfix e Fix?
+</details>
+<details>
+<summary>2. Qual a diferença entre Hotfix e Fix?</summary>
 A diferença é procedural. O Hotfix é um bug crítico que se encontra em produção e portanto deve ser corrigido rapidamente, ignorando passos de um Fix "normal" (Code Review, Origem de Release, etc...).
-1. Porque a branch de Homologação recebe release se a release normalmente parte dela (mesmo caso com hotfixes e a branch de Produção)?
+</details>
+<details>
+<summary>3. Porque a branch de Homologação recebe release se a release normalmente parte dela (mesmo caso com hotfixes e a branch de Produção)?</summary>
 Para manter as branches de Homologação e Produção absolutamente sincronizadas, incluindo releases e versionamento.
-1. Versionamento?
+</details>
+<details>
+<summary>4. Versionamento?</summary>
 Sim. g-flow é alinhado com a prática de [Versionamento Semântico](https://semver.org/). A ferramenta incluirá um script de "bump" de versão.
-1. Quando a ferramenta ficará pronta?
-A ferramenta, escrita em bash, está quase pronta. Fique de olho ("watch") no repositório para ser avisado assim que ela for lançada.
+</details>
+<details>
