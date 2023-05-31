@@ -39,7 +39,7 @@ Questões importantes a serem consideradas:
 1. Como qualquer software livre, a ferramenta `g-flow.sh` é fornecida sem garantias (veja o arquivo da [Licença](/LICENSE));
 1. Por favor observe que a ferramenta **sempre** fará:
 * Um checkout de produção e um pull para garantir que sua cópia de produção esteja sincroizada;
-* Sincronização da branch criada com o remote.
+* O push imediato da branch criada para o remote.
 3. Embora eu não seja um ignorante no assunto eu não sou, por nenhum esforço de imaginação, um programador bash, portanto muitas coisas na ferramenta provavelmente podem ser melhoradas. Em breve vou publicar as guidelines para contribuir com o projeto.
 1. No momento a ferramenta foi testada apenas com Linux (Fedora, mas deve funcionar em qualquer distribuição que possua uma versão mdoerna de bash rodando). Testes em outras distribuições Linux e outros Sistemas Operacionais são **muito bem-vindas**, mas não posso garantir implementações para outros SOs.
 
