@@ -1,7 +1,7 @@
 # g-flow
 ![Logo](media/logo.png)
 
-[ [Intro](#intro) ] [ [Ferramenta](#ferramenta) ] [ [Estratégia de Branching](#estratégia-de-branching) ] [ [Fluxos de Exemplo](#fluxos-de-exemplo) ] [ [FAQ](#faq) ]
+[ [Intro](#intro) ] [ [Ferramenta](#ferramenta) ] [ [Estratégia de Branching](#estratégia-de-branching) ] [ [Fluxos de Exemplo](#fluxos-de-exemplo) ] [ [FAQ](#faq) ] [ [Licença](#licença) ]
 
 ## Intro
 g-flow é uma implementação Gitflow completa e prática.
@@ -208,4 +208,9 @@ Para manter as branches de Homologação e Produção absolutamente sincronizada
 <summary>4. Versionamento?</summary>
 Sim. g-flow é alinhado com a prática de [Versionamento Semântico](https://semver.org/). A ferramenta incluirá um script de "bump" de versão.
 </details>
-<details>
+
+## Licença
+
+Licenciado como MIT 2023-* por [Galvão Desenvolvimento Ltda.](https://galvao.eti.br)
+
+[Licença completa](/LICENSE)
