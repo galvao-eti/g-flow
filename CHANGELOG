@@ -12,6 +12,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Tool with the necessary functionalities for developers to implement the g-flow strategy
 - A file to configure the tool (.g-flowrc[.dist])
 
+## Changed
+
+- README updated with instructions for using the tool, among other improvements.
+
 ## Fixed
 
 - Typo on the README's text
