@@ -1,5 +1,8 @@
 # g-flow
 ![Logo](media/logo.png)
+[ pt-BR ] [ [en](/i18n/en/README.md) ]
+
+---
 
 [ [Intro](#intro) ] [ [Ferramenta](#ferramenta) ] [ [Estratégia de Branching](#estratégia-de-branching) ] [ [Fluxos de Exemplo](#fluxos-de-exemplo) ] [ [FAQ](#faq) ] [ [Licença](#licença) ]
 
