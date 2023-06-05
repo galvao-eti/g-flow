@@ -130,27 +130,27 @@ fi
 # Tries to execute each action, building the summary, fails with error at each step
 
 {
-    git checkout ${MAIN} && RESULT+="Checkout em $MAIN;"$'\n'; 
+    git switch ${MAIN} && RESULT+="Switched branches to $MAIN;"$'\n';
 } || {
-    echo "Erro ao fazer o checkout da branch $MAIN" && exit 2;
+    echo "Error switching to $MAIN" && exit 2;
 }
 
 {
-    git pull && RESULT+="Branch $MAIN atualizada (pull);"$'\n';
+    git pull && RESULT+="$MAIN branch updated (pull);"$'\n';
 } || {
-    echo "Erro ao atualizar a branch $MAIN" && exit 2;
+    echo "Error updating the $MAIN branch" && exit 2;
 }
 
 {
-    git checkout -b $TYPE/$NAME && RESULT+="Branch $TYPE/$NAME criada a partir de $MAIN;"$'\n';
+    git switch --create $TYPE/$NAME && RESULT+="$TYPE/$NAME branch created from $MAIN;"$'\n';
 } || {
-    echo "Erro ao criar a branch $TYPE/$NAME" && exit 2;
+    echo "Error creating the $TYPE/$NAME branch" && exit 2;
 }
 
 {
-    git push -u origin $TYPE/$NAME && RESULT+="Branch $TYPE/$NAME sincronizada com o Github."$'\n';
+    git push -u origin $TYPE/$NAME && RESULT+="$TYPE/$NAME branch remotely synchronized."$'\n';
 } || {
-    echo "Erro ao sincronizar a branch $TYPE/$NAME com o Github" && exit 2;
+    echo "Error trying to remotely synchronize the $TYPE/$NAME branch" && exit 2;
 }
 
 # If this point is reached means that the execution was successful, present the summary
