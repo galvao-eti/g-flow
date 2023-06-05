@@ -13,7 +13,8 @@
 
 INIT_VERSION=0.1.0
 
-# Branch types. If you wish to "disable" a branch type: set it to ""
+# Branch types. If you wish to disable a branch type: set it to <empty>, e.g.: EPIC=
+# Meaning there's no other character than a newline after the equal sign.
 
 EPIC=epic
 FEATURE=feat
