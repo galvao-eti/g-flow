@@ -24,7 +24,7 @@ trim() {
 declare -A CONFIG=(
     [INIT_VERSION]="0.1.0"
     [EPIC]="epic"
-    [FEAT]="feat"
+    [FEATURE]="feat"
     [FIX]="fix"
     [HOTFIX]="hfix"
     [PROD_BRANCH]="main"
@@ -80,7 +80,7 @@ MAJOR=${versionNums[0]}
 MINOR=${versionNums[1]}
 PATCH=${versionNums[2]}
 
-VALID_TYPES=(${CONFIG[EPIC]} ${CONFIG[FEAT]} ${CONFIG[FIX]} ${CONFIG[HOTFIX]})
+VALID_TYPES=(${CONFIG[EPIC]} ${CONFIG[FEATURE]} ${CONFIG[FIX]} ${CONFIG[HOTFIX]})
 PREDEF_MAIN=${CONFIG[PROD_BRANCH]}
 RESULT=""
 
@@ -103,6 +103,10 @@ if  ! echo ${VALID_TYPES[@]} | grep -q -w "$TYPE"; then
      echo "$USAGE"
      exit 1
 fi
+
+for k in "${!CONFIG[@]}"; do
+    [[ ${CONFIG[$k]} == $TYPE ]] && TYPE="${k,,}"
+done
 
 # Tests if the branch name was supplied
 
